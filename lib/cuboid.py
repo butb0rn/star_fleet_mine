@@ -1,0 +1,2 @@
+def cuboid():
+    print "cuboid"
