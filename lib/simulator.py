@@ -10,17 +10,16 @@ class Simulator:
         self.vessel = vessel.Vessel()
         self.commands = []
         self.step = 1
-        self.mine_map = self.grid.get_grid_file()
+        self.mine_map = self.grid.grid_field
 
     def run(self):
+        self.grid.find_active_mines()
         self.commands = self.script.get_commands()
-        #find active mines
 
         for command in self.commands:
             #put conditions to break the loop
             self.print_step()
             self.grid.print_grid(self.mine_map)
-            #get command with the loop
             self.script.print_command(command)
             for order in command.split():
                 self.mine_map = self.execute_command(order)
@@ -29,7 +28,7 @@ class Simulator:
         self.vessel.print_score()
 
     def execute_command(self, order):
-        map_after_instruct = self.vessel.execute_command(order, self.mine_map)
+        map_after_instruct = self.vessel.execute_command(order, self.mine_map, self.grid)
         return map_after_instruct
 
 

@@ -12,7 +12,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-
+#TODO Start from middle- ship location
 #TODO create adjust map
 #TODO check for border
 #TODO check for losing case
